@@ -10,7 +10,10 @@
 <%= link_to 'Produtos', produtos_path %>
 <%= link_to 'Vendas', vendas_path %>
 <%= link_to 'Clientes', clientes_path %>
-
+<ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
 
 <%= yield %>
 
