@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Produto</th>
+      <th>Cliente</th>
       <th>Quantidade</th>
       <th>Data</th>
       <th>Valor</th>
@@ -17,6 +18,7 @@
     <% @vendas.each do |venda| %>
       <tr>
         <td><%= venda.produto.nome %></td>
+        <td><%= venda.cliente.nome %></td>
         <td><%= venda.quantidade %></td>
         <td><%= venda.data %></td>
         <td><%= venda.valor %></td>

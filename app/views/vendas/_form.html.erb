@@ -16,6 +16,10 @@
     <%= f.select(:produto_id, Produto.all.collect{|p| [p.nome, p.id]}, prompt: 'selecione') %>
   </div>
   <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.select(:cliente_id, Cliente.all.collect{|p| [p.nome, p.id]}, prompt: 'selecione') %>
+  </div>
+  <div class="field">
     <%= f.label :quantidade %><br>
     <%= f.number_field :quantidade %>
   </div>
