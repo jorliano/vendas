@@ -5,3 +5,4 @@ Requisitos
  rails 4.2.3
  ruby 2.2.2
  pg 9.4
+ ubuntu 15.04
