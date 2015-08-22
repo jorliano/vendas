@@ -4,3 +4,932 @@ Started GET "/" for 127.0.0.1 at 2015-08-22 13:24:35 -0300
 Processing by Rails::WelcomeController#index as HTML
   Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/railties-4.2.3/lib/rails/templates/rails/welcome/index.html.erb (3.3ms)
 Completed 200 OK in 58ms (Views: 27.2ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateVendas (20150822175908)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (17.4ms)[0m  [1mCREATE TABLE "vendas" ("id" serial primary key, "produto_id" integer NOT NULL, "quantidade" integer NOT NULL, "data" date NOT NULL, "valor" decimal(12,2) NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (4.4ms)[0m  CREATE  INDEX  "index_vendas_on_produto_id" ON "vendas"  ("produto_id")
+  [1m[36m (71.3ms)[0m  [1mALTER TABLE "vendas" ADD CONSTRAINT "fk_rails_ab8f683e29"
+FOREIGN KEY ("produto_id")
+  REFERENCES "produtos" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150822175908"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'produtos'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vendas'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:04:18 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (0.4ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 682ms (Views: 656.5ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:04:19 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:04:19 -0300
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:04:30 -0300
+Processing by VendasController#index as HTML
+  [1m[36mVenda Load (2.2ms)[0m  [1mSELECT "vendas".* FROM "vendas"[0m
+  Rendered vendas/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 207ms (Views: 178.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:06:01 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (0.6ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 197ms (Views: 195.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.0ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 119ms (Views: 116.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:06:24 -0300
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:06:28 -0300
+Processing by VendasController#index as HTML
+  [1m[35mVenda Load (14.1ms)[0m  SELECT "vendas".* FROM "vendas"
+  Rendered vendas/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 82ms (Views: 64.3ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/vendas/new" for 127.0.0.1 at 2015-08-22 15:06:32 -0300
+Processing by VendasController#new as HTML
+  Rendered vendas/_form.html.erb (81.4ms)
+  Rendered vendas/new.html.erb within layouts/application (86.9ms)
+Completed 200 OK in 164ms (Views: 148.9ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/vendas" for 127.0.0.1 at 2015-08-22 15:06:36 -0300
+Processing by VendasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeVjM3w0yOHZDC5Box9k6oTJJgdSvVQtrFA6FncZFaYP1BcOfpuzFDiA7ibV2X5mh6suveX1I3t6R9QKwhtpZA==", "venda"=>{"produto_id"=>"", "quantidade"=>"", "data(1i)"=>"2015", "data(2i)"=>"8", "data(3i)"=>"22", "valor"=>""}, "commit"=>"Create Venda"}
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.0ms)[0m  ROLLBACK
+  Rendered vendas/_form.html.erb (14.4ms)
+  Rendered vendas/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 125ms (Views: 100.2ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/vendas" for 127.0.0.1 at 2015-08-22 15:13:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VendasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeVjM3w0yOHZDC5Box9k6oTJJgdSvVQtrFA6FncZFaYP1BcOfpuzFDiA7ibV2X5mh6suveX1I3t6R9QKwhtpZA==", "venda"=>{"produto_id"=>"", "quantidade"=>"", "data(1i)"=>"2015", "data(2i)"=>"8", "data(3i)"=>"22", "valor"=>""}, "commit"=>"Create Venda"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mProduto Load (3.0ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered vendas/_form.html.erb (67.7ms)
+  Rendered vendas/new.html.erb within layouts/application (75.8ms)
+Completed 200 OK in 708ms (Views: 603.2ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:13:50 -0300
+
+
+Started POST "/vendas" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+Processing by VendasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeVjM3w0yOHZDC5Box9k6oTJJgdSvVQtrFA6FncZFaYP1BcOfpuzFDiA7ibV2X5mh6suveX1I3t6R9QKwhtpZA==", "venda"=>{"produto_id"=>"", "quantidade"=>"", "data(1i)"=>"2015", "data(2i)"=>"8", "data(3i)"=>"22", "valor"=>""}, "commit"=>"Create Venda"}
+  [1m[36m (3.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.5ms)[0m  ROLLBACK
+  [1m[36mProduto Load (2.6ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered vendas/_form.html.erb (37.4ms)
+  Rendered vendas/new.html.erb within layouts/application (44.2ms)
+Completed 200 OK in 271ms (Views: 227.3ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:47 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:48 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:14:48 -0300
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:14:55 -0300
+Processing by VendasController#index as HTML
+  [1m[35mVenda Load (2.9ms)[0m  SELECT "vendas".* FROM "vendas"
+  Rendered vendas/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 131ms (Views: 127.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/vendas/new" for 127.0.0.1 at 2015-08-22 15:14:58 -0300
+Processing by VendasController#new as HTML
+  [1m[36mProduto Load (0.3ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered vendas/_form.html.erb (17.4ms)
+  Rendered vendas/new.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 91ms (Views: 88.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/vendas" for 127.0.0.1 at 2015-08-22 15:15:47 -0300
+Processing by VendasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Bx+nRl53zsYNjZ0ne1897kHbl28FWx9ewsl2M0s5+RldLtN7XNi1M+wBXUANmSdiQrmf1bITaAgU3pgv/juF2w==", "venda"=>{"produto_id"=>"5", "quantidade"=>"8", "data(1i)"=>"2015", "data(2i)"=>"8", "data(3i)"=>"22", "valor"=>"10.20"}, "commit"=>"Create Venda"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (31.0ms)[0m  [1mINSERT INTO "vendas" ("produto_id", "quantidade", "valor", "data", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["produto_id", 5], ["quantidade", 8], ["valor", "10.2"], ["data", "2015-08-22"], ["created_at", "2015-08-22 18:15:47.079107"], ["updated_at", "2015-08-22 18:15:47.079107"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/vendas/1
+Completed 302 Found in 59ms (ActiveRecord: 40.8ms)
+
+
+Started GET "/vendas/1" for 127.0.0.1 at 2015-08-22 15:15:47 -0300
+Processing by VendasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVenda Load (0.9ms)[0m  [1mSELECT  "vendas".* FROM "vendas" WHERE "vendas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProduto Load (0.2ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered vendas/show.html.erb within layouts/application (60.9ms)
+Completed 200 OK in 152ms (Views: 132.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:15:52 -0300
+Processing by VendasController#index as HTML
+  [1m[36mVenda Load (0.2ms)[0m  [1mSELECT "vendas".* FROM "vendas"[0m
+  [1m[35mProduto Load (0.2ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered vendas/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+Processing by VendasController#index as HTML
+  [1m[36mVenda Load (1.1ms)[0m  [1mSELECT "vendas".* FROM "vendas"[0m
+  [1m[35mProduto Load (0.7ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered vendas/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 97ms (Views: 93.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:16:47 -0300
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:17:03 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 101ms (Views: 99.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:17:08 -0300
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5yZDj6WCzFbi6DzwTmtb53KvSx2FbGgEhG9bdbShwSu9Fzeypy23owNk/Jc4rUFrcc1DpzIkH1JSeLVpAaO96Q==", "id"=>"5"}
+  [1m[35mProduto Load (0.7ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.6ms)[0m  DELETE FROM "produtos" WHERE "produtos"."id" = $1  [["id", 5]]
+PG::ForeignKeyViolation: ERRO:  atualização ou exclusão em tabela "produtos" viola restrição de chave estrangeira "fk_rails_ab8f683e29" em "vendas"
+DETAIL:  Chave (id)=(5) ainda é referenciada pela tabela "vendas".
+: DELETE FROM "produtos" WHERE "produtos"."id" = $1
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 8.9ms)
+
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERRO:  atualização ou exclusão em tabela "produtos" viola restrição de chave estrangeira "fk_rails_ab8f683e29" em "vendas"
+DETAIL:  Chave (id)=(5) ainda é referenciada pela tabela "vendas".
+: DELETE FROM "produtos" WHERE "produtos"."id" = $1):
+  app/controllers/produtos_controller.rb:57:in `destroy'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (50.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (29.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (76.1ms)
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:28:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5yZDj6WCzFbi6DzwTmtb53KvSx2FbGgEhG9bdbShwSu9Fzeypy23owNk/Jc4rUFrcc1DpzIkH1JSeLVpAaO96Q==", "id"=>"5"}
+  [1m[35mProduto Load (0.4ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (1.7ms)[0m  [1mBEGIN[0m
+  [1m[35mVenda Exists (1.9ms)[0m  SELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1  [["produto_id", 5]]
+  [1m[36m (1.1ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/produtos
+Completed 302 Found in 199ms (ActiveRecord: 20.6ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (2.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 487ms (Views: 477.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:28:31 -0300
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:28:39 -0300
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7gqFkR8/18b7xd+oykugGAisiabG+L191ncCsA9bpbO0O/GsHZCsMxpJH8+8jbqUC86BHHGwyisAYOysulnZcQ==", "id"=>"5"}
+  [1m[36mProduto Load (1.3ms)[0m  [1mSELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mVenda Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1[0m  [["produto_id", 5]]
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/produtos
+Completed 302 Found in 12ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:28:39 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.2ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 131ms (Views: 129.5ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:28:59 -0300
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"21wwW+htT+RQZzt5T/+7sVF7i/wxeNt8EBOoRhDwvImBbURm6sI0EbHr+x45OaE9UhmDRoYwrCrGBEZapfLASw==", "id"=>"5"}
+  [1m[35mProduto Load (1.0ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mVenda Exists (0.3ms)[0m  SELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1  [["produto_id", 5]]
+  [1m[36m (4.5ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/produtos
+Completed 302 Found in 26ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:28:59 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (2.6ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 171ms (Views: 167.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:32:19 -0300
+
+SyntaxError (/home/ubunto/projetos/vendas/app/controllers/produtos_controller.rb:78: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/produtos_controller.rb:78: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (46.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (95.2ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.9ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 82ms (Views: 74.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:36 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:37 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:32:37 -0300
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:32:40 -0300
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/7+LA/rdKC1C9up84oRmhzLX/+59RaRsFyl2BFo8fESljv8++HJT2KN6KhuUQnwLMbX3VMoN0zrBPpgY7z4Ahg==", "id"=>"5"}
+  [1m[35mProduto Load (1.8ms)[0m  SELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mVenda Exists (0.8ms)[0m  SELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1  [["produto_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mVenda Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1[0m  [["produto_id", 5]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/produtos
+Completed 302 Found in 32ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:32:40 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (4.1ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 104ms (Views: 99.6ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:36:57 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (0.3ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 129ms (Views: 115.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:36:57 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:36:57 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:36:57 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:36:58 -0300
+
+
+Started DELETE "/produtos/5" for 127.0.0.1 at 2015-08-22 15:37:01 -0300
+Processing by ProdutosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+eFemXEGkn3atTPPf+YlJWHH+GWpb3uPK96n7NfWuMaj0Cqkc6npiDs586gJID+pYqXw3x4nDNn9yUnwYtTEBA==", "id"=>"5"}
+  [1m[36mProduto Load (1.8ms)[0m  [1mSELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mVenda Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1[0m  [["produto_id", 5]]
+  [1m[35m (1.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mVenda Exists (1.0ms)[0m  SELECT  1 AS one FROM "vendas" WHERE "vendas"."produto_id" = $1 LIMIT 1  [["produto_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/produtos
+Completed 302 Found in 44ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:37:01 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (0.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `full_messages' for #<Hash:0x007fac093f0d88>):
+    14:       <h2><%= pluralize(alert.count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+    16:       <ul>
+    17:       <% alert.full_messages.each do |message| %>
+    18:         <li><%= message %></li>
+    19:       <% end %>
+    20:       </ul>
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb___3121729871452106798_70188442508200'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (21.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (73.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (2.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (72.7ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:38:45 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 1.7ms)
+
+ActionView::Template::Error (undefined method `errors' for #<Hash:0x007fac0a5d3b68>):
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert.errors.count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+    16:       <ul>
+    17:       <% alert.errors.full_messages.each do |message| %>
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___3121729871452106798_70188442391460'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (41.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (84.8ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:40:18 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (6.1ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (11.7ms)
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 6.1ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+    16:       <ul>
+    17:       <% alert[:errors].full_messages.each do |message| %>
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___3121729871452106798_39712020'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (50.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (4.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (42.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (83.0ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:41:10 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.7ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 1.7ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:erros].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___3121729871452106798_70188436297180'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (50.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (53.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (87.0ms)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:41:24 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (1.5ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___3121729871452106798_70188438563680'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (60.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (38.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (3.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (88.0ms)
+
+
+Started PUT "/console/repl_sessions/cf62b5cb1a761d7ea98f0eacf39e5d42" for 127.0.0.1 at 2015-08-22 15:41:40 -0300
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:42:00 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (0.4ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 168ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___3121729871452106798_70188438563680'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (50.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (35.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (3.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.8ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (78.6ms)
+
+
+Started PUT "/console/repl_sessions/2aabda2f16edc63616eb9d449d7e8e90" for 127.0.0.1 at 2015-08-22 15:42:13 -0300
+
+
+Started PUT "/console/repl_sessions/2aabda2f16edc63616eb9d449d7e8e90" for 127.0.0.1 at 2015-08-22 15:42:32 -0300
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:42:42 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (1.5ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___3121729871452106798_70188438563680'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (52.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (57.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (88.8ms)
+
+
+Started PUT "/console/repl_sessions/59485f7bc0edb294146d5590b3a83541" for 127.0.0.1 at 2015-08-22 15:42:57 -0300
+
+
+Started GET "/produtos" for 127.0.0.1 at 2015-08-22 15:43:22 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (4.3ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (27.2ms)
+Completed 500 Internal Server Error in 423ms (ActiveRecord: 6.0ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__3360294273646208264_43339980'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (27.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (85.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (40.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (104.5ms)
+
+
+Started PUT "/console/repl_sessions/202e3c5e6a18319fc5ff4b6b04ea3f07" for 127.0.0.1 at 2015-08-22 15:43:32 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:43:58 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.7ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (11.2ms)
+Completed 500 Internal Server Error in 151ms (ActiveRecord: 1.7ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__3360294273646208264_43339980'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (55.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (2.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (46.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (3.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (78.6ms)
+
+
+Started PUT "/console/repl_sessions/4da4f592b794dace16d4ccacc66685a3" for 127.0.0.1 at 2015-08-22 15:44:08 -0300
+
+
+Started PUT "/console/repl_sessions/4da4f592b794dace16d4ccacc66685a3" for 127.0.0.1 at 2015-08-22 15:44:20 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:44:23 -0300
+Processing by ProdutosController#index as HTML
+  [1m[35mProduto Load (2.5ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered produtos/index.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 2.5ms)
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+     9: <body>
+    10: <%= link_to 'Produtos', produtos_path %>
+    11: <%= link_to 'Vendas', vendas_path %>
+    12: <% if alert[:errors].any? %>
+    13:     <div id="error_explanation">
+    14:       <h2><%= pluralize(alert[:errors].count, "error") %> prohibited this model from being destroyed:</h2>
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__3360294273646208264_43339980'
+
+
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.0ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.9ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (68.2ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.7ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ubunto/.rvm/gems/ruby-2.2.2@vendas/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (104.9ms)
+
+
+Started PUT "/console/repl_sessions/53ede905870ab0fe0823a36a04a8e24e" for 127.0.0.1 at 2015-08-22 15:44:35 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-22 15:45:16 -0300
+Processing by ProdutosController#index as HTML
+  [1m[36mProduto Load (1.9ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered produtos/index.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 129ms (Views: 101.5ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/produtos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/scaffolds.self-e9b97bc3638c32b7bc634c4d8a463eb12babcb8d12e1c05e59392cbe24ee8fd3.css?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/vendas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/produtos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/vendas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-22 15:45:17 -0300
+
+
+Started GET "/vendas" for 127.0.0.1 at 2015-08-22 15:45:50 -0300
+Processing by VendasController#index as HTML
+  [1m[35mVenda Load (0.4ms)[0m  SELECT "vendas".* FROM "vendas"
+  [1m[36mProduto Load (0.2ms)[0m  [1mSELECT  "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered vendas/index.html.erb within layouts/application (43.7ms)
+Completed 200 OK in 112ms (Views: 106.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/vendas/new" for 127.0.0.1 at 2015-08-22 15:45:53 -0300
+Processing by VendasController#new as HTML
+  [1m[35mProduto Load (0.3ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered vendas/_form.html.erb (32.3ms)
+  Rendered vendas/new.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 122ms (Views: 121.4ms | ActiveRecord: 0.3ms)
