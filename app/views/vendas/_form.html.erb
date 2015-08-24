@@ -1,37 +1,59 @@
-<%= form_for(@venda) do |f| %>
-  <% if @venda.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@venda.errors.count, "error") %> prohibited this venda from being saved:</h2>
+<%= form_for @venda, :html => { :class => "form-horizontal venda" } do |f| %>
 
-      <ul>
-      <% @venda.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @venda.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@venda.errors.count, "error") %> prohibited this venda from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @venda.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :produto_id %><br>
-    <%= f.select(:produto_id, Produto.all.collect{|p| [p.nome, p.id]}, prompt: 'selecione') %>
+  <div class="control-group">
+    <%= f.label :produto_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :produto_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@venda[:produto_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :cliente_id %><br>
-    <%= f.select(:cliente_id, Cliente.all.collect{|p| [p.nome, p.id]}, prompt: 'selecione') %>
+  <div class="control-group">
+    <%= f.label :quantidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :quantidade, :class => 'form-control' %>
+    </div>
+    <%= error_span(@venda[:quantidade]) %>
   </div>
-  <div class="field">
-    <%= f.label :quantidade %><br>
-    <%= f.number_field :quantidade %>
+  <div class="control-group">
+    <%= f.label :data, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data, :class => 'form-control' %>
+    </div>
+    <%= error_span(@venda[:data]) %>
   </div>
-  <div class="field">
-    <%= f.label :data %><br>
-    <%= f.date_select :data %>
+  <div class="control-group">
+    <%= f.label :valor, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :valor, :class => 'form-control' %>
+    </div>
+    <%= error_span(@venda[:valor]) %>
   </div>
-  <div class="field">
-    <%= f.label :valor %><br>
-    <%= f.text_field :valor %>
+  <div class="control-group">
+    <%= f.label :cliente_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cliente_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@venda[:cliente_id]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            vendas_path, :class => 'btn btn-default' %>
+
 <% end %>
